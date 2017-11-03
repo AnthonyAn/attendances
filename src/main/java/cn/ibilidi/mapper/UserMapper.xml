@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ibilidi.dao.UserDao">
+    <resultMap id="User" type="cn.ibilidi.model.User">
+        <result column="id" property="id" jdbcType="VARCHAR" javaType="String"/>
+        <result column="name" property="name" jdbcType="VARCHAR" javaType="String"/>
+        <result column="openid" property="openid" jdbcType="VARCHAR" javaType="String"/>
+        <result column="class" property="classname" jdbcType="VARCHAR" javaType="String"/>
+        <result column="pwd" property="pwd" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+    <select id="getUser" resultMap="User">
+        SELECT
+        id,name,openid,class,pwd
+        FROM
+        users
+        WHERE
+        <if test="flag==0">
+            openid=#{id_or_openid}
+        </if>
+        <if test="flag==1">
+            id=#{id_or_openid}
+        </if>
+    </select>
+    <select id="getAllUsers" resultMap="User">
+        SELECT
+        id,name,openid,class,pwd
+        FROM
+        users
+    </select>
+</mapper>
