@@ -15,13 +15,16 @@
         id,name,openid,headurl,gender
         FROM
         users
-        WHERE
-        <if test="flag==0">
-            openid=#{id_or_openid}
-        </if>
-        <if test="flag==1">
-            id=#{id_or_openid}
-        </if>
+        <where>
+            <choose>
+                <when test="flag==0">
+                    AND openid=#{id_or_openid}
+                </when>
+                <when test="flag==1">
+                    AND id=#{id_or_openid}
+                </when>
+            </choose>
+        </where>
     </select>
     <select id="getAllUsers" resultMap="User">
         SELECT
@@ -29,4 +32,22 @@
         FROM
         users
     </select>
+    <update id="updateWXUser" parameterType="User">
+        UPDATE
+        user
+        <set>
+            <if test="openid!=null and openid!=''">
+                openid=#{openid},
+            </if>
+            <if test="headurl!=null and headurl!=''">
+                headurl=#{headurl},
+            </if>
+            <if test="gender!=null and gender!=''">
+                gender=#{gender},
+            </if>
+        </set>
+        <where>
+            id=#{id} AND name=#{name}
+        </where>
+    </update>
 </mapper>

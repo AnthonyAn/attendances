@@ -23,7 +23,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value="/getUserByOpenid/{openid}",produces="application/json;charset=UTF-8")
+    @RequestMapping(value="/getUserByOpenid/{openid}")
     public Map<String, Object> getUserByOpenid(@PathVariable String openid){
         Map<String,Object> map=new HashMap<String, Object>();
 
@@ -48,7 +48,7 @@ public class UserController {
         return map;
     }
 
-    @RequestMapping(value="/getAllUsers",produces="application/json;charset=UTF-8")
+    @RequestMapping(value="/getAllUsers")
     @ResponseBody
     public Map<String, Object> getAllUsers(){
         Map<String,Object> map=new HashMap<String, Object>();
@@ -57,6 +57,16 @@ public class UserController {
         map.put(GlobalConstants.STATE,200);
         map.put(GlobalConstants.MESSAGE,"success");
         map.put(GlobalConstants.DATA,users);
+        return map;
+    }
+    @RequestMapping(value = "/updateWXUser")
+    @ResponseBody
+    public Map<String,Object> updateWXUser(String id,String name,String headurl,String openid,int gender){
+        Map<String,Object> map=new HashMap<String, Object>();
+
+        userService.updateWXUser(id,name,headurl,openid,gender);
+        map.put(GlobalConstants.STATE,200);
+        map.put(GlobalConstants.MESSAGE,"success");
         return map;
     }
 

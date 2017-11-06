@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ibilidi.dao.StudentDao">
+    <resultMap id="Student" type="Student">
+        <result column="id" property="id" jdbcType="VARCHAR" javaType="String"/>
+        <result column="name" property="name" jdbcType="VARCHAR" javaType="String"/>
+        <result column="openid" property="openid" jdbcType="VARCHAR" javaType="String"/>
+        <result column="headurl" property="headurl" jdbcType="VARCHAR" javaType="String"/>
+        <result column="gender" property="gender" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="bj" property="bj" jdbcType="VARCHAR" javaType="String"/>
+        <result column="nj" property="nj" jdbcType="VARCHAR" javaType="String"/>
+        <result column="zy" property="zy" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+    <select id="getStudent" resultMap="Student">
+        SELECT
+        *
+        FROM
+        studentinfo
+        <where>
+            <choose>
+                <when test="flag==0">
+                    AND openid=#{id_or_openid}
+                </when>
+                <when test="flag==1">
+                    AND id=#{id_or_openid}
+                </when>
+            </choose>
+        </where>
+    </select>
+    <select id="getStudents" resultMap="Student">
+        SELECT
+        *
+        FROM
+        studentinfo
+        <where>
+            <choose>
+                <when test="flag==0">
+                    AND bj=#{bj_or_zy_or_nj}
+                </when>
+                <when test="flag==1">
+                    AND zy=#{bj_or_zy_or_nj}
+                </when>
+                <when test="flag==2">
+                    AND nj=#{bj_or_zy_or_nj}
+                </when>
+            </choose>
+        </where>
+    </select>
+    <select id="getAllStudents" resultMap="Student">
+        SELECT
+        *
+        FROM
+        studentinfo
+    </select>
+    <select id="getStudentsByKch" resultMap="Student">
+        SELECT
+        studentinfo.*
+        FROM
+        studentinfo,xkb
+        <where>
+            <if test="kch!=null and kch!=''">
+                xkb.kch=#{kch}
+            </if>
+            AND studentinfo.id=xkb.id
+        </where>
+    </select>
+</mapper>

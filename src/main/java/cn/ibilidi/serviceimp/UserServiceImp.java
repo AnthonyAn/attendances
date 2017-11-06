@@ -29,4 +29,14 @@ public class UserServiceImp implements UserService {
     public ArrayList<User> getAllUsers() {
         return userDao.getAllUsers();
     }
+
+    public int updateWXUser(String id,String name,String headurl,String openid,int gender) {
+        User user=new User();
+        user.setId(id);
+        user.setGender(gender);
+        user.setHeadurl(headurl);
+        user.setOpenid(openid);
+        user.setName(name);
+        return userDao.updateWXUser(user);
+    }
 }

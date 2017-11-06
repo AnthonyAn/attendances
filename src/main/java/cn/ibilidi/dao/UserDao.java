@@ -14,5 +14,6 @@ public interface UserDao {
 
     ArrayList<User> getAllUsers();
 
+    int updateWXUser(User user);
 
 }

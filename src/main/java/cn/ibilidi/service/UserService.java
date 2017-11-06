@@ -14,4 +14,5 @@ public interface UserService {
     User getUserByOpenid(String openid);
     User getUserById(String id);
     ArrayList<User> getAllUsers();
+    int updateWXUser(String id,String name,String headurl,String openid,int gender);
 }
