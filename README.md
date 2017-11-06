@@ -6,4 +6,6 @@
 ## user
 
 - getUserByOpenid
-- getAllUserss
+- getAllUsers
+
+## 

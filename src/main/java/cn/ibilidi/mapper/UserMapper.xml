@@ -3,16 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.ibilidi.dao.UserDao">
-    <resultMap id="User" type="cn.ibilidi.model.User">
+    <resultMap id="User" type="User">
         <result column="id" property="id" jdbcType="VARCHAR" javaType="String"/>
         <result column="name" property="name" jdbcType="VARCHAR" javaType="String"/>
         <result column="openid" property="openid" jdbcType="VARCHAR" javaType="String"/>
-        <result column="class" property="classname" jdbcType="VARCHAR" javaType="String"/>
-        <result column="pwd" property="pwd" jdbcType="VARCHAR" javaType="String"/>
+        <result column="headurl" property="headurl" jdbcType="VARCHAR" javaType="String"/>
+        <result column="gender" property="gender" jdbcType="INTEGER" javaType="Integer"/>
     </resultMap>
     <select id="getUser" resultMap="User">
         SELECT
-        id,name,openid,class,pwd
+        id,name,openid,headurl,gender
         FROM
         users
         WHERE
@@ -25,7 +25,7 @@
     </select>
     <select id="getAllUsers" resultMap="User">
         SELECT
-        id,name,openid,class,pwd
+        id,name,openid,headurl,gender
         FROM
         users
     </select>

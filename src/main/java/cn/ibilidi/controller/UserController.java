@@ -59,4 +59,5 @@ public class UserController {
         map.put(GlobalConstants.DATA,users);
         return map;
     }
+
 }
