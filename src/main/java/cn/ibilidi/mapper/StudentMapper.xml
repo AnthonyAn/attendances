@@ -54,7 +54,7 @@
         FROM
         studentinfo
     </select>
-    <select id="getStudentsByKch" resultMap="Student">
+    <select id="getStudentsByKch" resultType="Student" parameterType="java.util.HashMap">
         SELECT
         studentinfo.*
         FROM

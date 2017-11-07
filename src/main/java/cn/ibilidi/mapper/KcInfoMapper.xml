@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ibilidi.dao.KcInfoDao">
+    <resultMap id="KcInfo" type="KcInfo">
+        <result column="kch" property="kch" jdbcType="VARCHAR" javaType="String"/>
+        <result column="kcmc" property="kcmc" jdbcType="VARCHAR" javaType="String"/>
+        <result column="jsh" property="jsh" jdbcType="VARCHAR" javaType="String"/>
+        <result column="jsxm" property="jsxm" jdbcType="VARCHAR" javaType="String"/>
+        <result column="sksj" property="sksj" jdbcType="VARCHAR" javaType="String"/>
+        <result column="skdd" property="skdd" jdbcType="VARCHAR" javaType="String"/>
+        <collection property="students" column="{kch=kch}" ofType="Student"
+                    select="cn.ibilidi.dao.StudentDao.getStudentsByKch">
+        </collection>
+    </resultMap>
+    <select id="getKcInfoByKch" resultMap="KcInfo">
+    SELECT kcb.*
+    FROM kcb WHERE kch=#{kch}
+</select>
+</mapper>
