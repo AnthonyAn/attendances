@@ -6,6 +6,20 @@
 ## user
 
 - getUserByOpenid
+- getUserById
 - getAllUsers
+- updateWXUser
 
-## 
+## student
+
+- getStudentByOpenid
+- getStudentById
+- getStudentsByBj
+- getStudentsByZy
+- getStudentsByNj
+- getStudentsByKch
+- getAllStudents
+
+## kcinfo
+
+- getKcinfoBykch
