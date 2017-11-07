@@ -10,22 +10,6 @@ public class User {
     private String headurl;
     private int gender;
 
-    public String getHeadurl() {
-        return headurl;
-    }
-
-    public void setHeadurl(String headurl) {
-        this.headurl = headurl;
-    }
-
-    public int getGender() {
-        return gender;
-    }
-
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
-
     public String getId() {
         return id;
     }
@@ -50,8 +34,20 @@ public class User {
         this.openid = openid;
     }
 
-    public String getClassname() {
+    public String getHeadurl() {
         return headurl;
+    }
+
+    public void setHeadurl(String headurl) {
+        this.headurl = headurl;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
     }
 
     @Override

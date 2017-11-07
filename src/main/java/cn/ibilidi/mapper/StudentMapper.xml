@@ -4,16 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.ibilidi.dao.StudentDao">
     <resultMap id="Student" type="Student">
-        <result column="id" property="id" jdbcType="VARCHAR" javaType="String"/>
-        <result column="name" property="name" jdbcType="VARCHAR" javaType="String"/>
-        <result column="openid" property="openid" jdbcType="VARCHAR" javaType="String"/>
-        <result column="headurl" property="headurl" jdbcType="VARCHAR" javaType="String"/>
-        <result column="gender" property="gender" jdbcType="INTEGER" javaType="Integer"/>
-        <result column="bj" property="bj" jdbcType="VARCHAR" javaType="String"/>
-        <result column="nj" property="nj" jdbcType="VARCHAR" javaType="String"/>
-        <result column="zy" property="zy" jdbcType="VARCHAR" javaType="String"/>
+        <collection property="kcInfos" column="{xh=id}" select="cn.ibilidi.dao.KcInfoDao.getKcInfosByXh" ofType="KcInfo"></collection>
     </resultMap>
-    <select id="getStudent" resultMap="Student">
+    <select id="getStudent" resultMap="Student" parameterType="java.util.HashMap">
         SELECT
         *
         FROM
@@ -29,7 +22,7 @@
             </choose>
         </where>
     </select>
-    <select id="getStudents" resultMap="Student">
+    <select id="getStudents" resultType="Student">
         SELECT
         *
         FROM
@@ -48,7 +41,7 @@
             </choose>
         </where>
     </select>
-    <select id="getAllStudents" resultMap="Student">
+    <select id="getAllStudents" resultType="Student">
         SELECT
         *
         FROM
@@ -61,7 +54,7 @@
         studentinfo,xkb
         <where>
             <if test="kch!=null and kch!=''">
-                xkb.kch=#{kch}
+            AND xkb.kch=#{kch}
             </if>
             AND studentinfo.id=xkb.id
         </where>

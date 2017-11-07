@@ -12,18 +12,6 @@ public class KcInfo {
     private String skdd;
     private List<Student> students;
 
-    @Override
-    public String toString() {
-        return "KcInfoController{" +
-                "kch='" + kch + '\'' +
-                ", kcmc='" + kcmc + '\'' +
-                ", jsh='" + jsh + '\'' +
-                ", jsxm='" + jsxm + '\'' +
-                ", sksj='" + sksj + '\'' +
-                ", skdd='" + skdd + '\'' +
-                ", students=" + students +
-                '}';
-    }
 
     public String getKch() {
         return kch;
@@ -81,7 +69,16 @@ public class KcInfo {
         this.students = students;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "KcInfo{" +
+                "kch='" + kch + '\'' +
+                ", kcmc='" + kcmc + '\'' +
+                ", jsh='" + jsh + '\'' +
+                ", jsxm='" + jsxm + '\'' +
+                ", sksj='" + sksj + '\'' +
+                ", skdd='" + skdd + '\'' +
+                ", students=" + students +
+                '}';
+    }
 }

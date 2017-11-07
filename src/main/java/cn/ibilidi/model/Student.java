@@ -1,9 +1,12 @@
 package cn.ibilidi.model;
 
+import java.util.List;
+
 public class Student extends User{
     private String bj;
     private String nj;
     private String zy;
+    private List<KcInfo> kcInfos;
 
     @Override
     public String toString() {
@@ -11,7 +14,16 @@ public class Student extends User{
                 "bj='" + bj + '\'' +
                 ", nj='" + nj + '\'' +
                 ", zy='" + zy + '\'' +
+                ", kcInfos=" + kcInfos +
                 '}';
+    }
+
+    public List<KcInfo> getKcInfos() {
+        return kcInfos;
+    }
+
+    public void setKcInfos(List<KcInfo> kcInfos) {
+        this.kcInfos = kcInfos;
     }
 
     public String getBj() {
