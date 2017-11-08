@@ -74,4 +74,8 @@
 - 踩坑
   - 参数传递：被调用的select使用类型为HashMap的paramtype。如果直接使用基本类型的参数传递方法，会出现"org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'name' in 'class java.lang.String'"错误。
   - 栈溢出：mapper的配置均映射到设定的resultmap，导致查询死循环，关联查找时栈溢出。所以关联查找时配置文件中相互引用的
-select不能同时映射到自定义的resultmap，其中一个要设定resulttype到自身的实体对象，打破循环。
+select不能同时映射到自定义的resultmap，其中一个要设定resulttype到自身的实体对象，打破循环。、
+
+## mybatis关联关系时传递常量
+
+讲常量值select as到指定的参数名即可。如果不这样做，直接在column属性里定义参数值，会报从结果集中找不到名称为常量的列的错。
