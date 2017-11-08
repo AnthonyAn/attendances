@@ -1,6 +1,5 @@
 package cn.ibilidi.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class KcInfo {
@@ -10,8 +9,8 @@ public class KcInfo {
     private String jsxm;
     private String sksj;
     private String skdd;
+    private int allowornot;
     private List<Student> students;
-
 
     public String getKch() {
         return kch;
@@ -61,6 +60,14 @@ public class KcInfo {
         this.skdd = skdd;
     }
 
+    public int getAllowornot() {
+        return allowornot;
+    }
+
+    public void setAllowornot(int allowornot) {
+        this.allowornot = allowornot;
+    }
+
     public List<Student> getStudents() {
         return students;
     }
@@ -78,7 +85,13 @@ public class KcInfo {
                 ", jsxm='" + jsxm + '\'' +
                 ", sksj='" + sksj + '\'' +
                 ", skdd='" + skdd + '\'' +
+                ", allowornot=" + allowornot +
                 ", students=" + students +
                 '}';
     }
+
+
+
+
+
 }

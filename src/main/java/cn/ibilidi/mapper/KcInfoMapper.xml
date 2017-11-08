@@ -13,8 +13,24 @@
         FROM kcb WHERE kch=#{kch}
     </select>
    <select id="getKcInfosByJsh" resultType="KcInfo" parameterType="java.util.HashMap">
+       <if test="jxdd!=null and jxdd!=''">
+           <bind name="jxdd_pattern" value="'%'+jxdd+'%'"/>
+
+       </if>
        SELECT kcb.*
-       FROM kcb WHERE jsh=#{jsh};
+       FROM kcb
+       <where>
+           <if test="jsh!=null and jsh!=''">
+               AND jsh=#{jsh}
+           </if>
+           <if test="kcmc!=null and kcmc!=''">
+               AND kcmc=#{kcmc}
+           </if>
+           <if test="jxdd!=null and jxdd!=''">
+               AND skdd LIKE #{jxdd_pattern}
+           </if>
+       </where>
+
    </select>
     <select id="getKcInfosByXh" parameterType="java.util.HashMap" resultType="KcInfo">
         SELECT kcb.*
@@ -26,4 +42,14 @@
             AND kcb.kch=xkb.kch
         </where>
     </select>
+    <update id="updateAllowOrNot" >
+        UPDATE kcb
+        <set>
+                allowornot=#{allowornot}
+        </set>
+        <where>
+            kch=#{kch}
+
+        </where>
+    </update>
 </mapper>

@@ -24,6 +24,14 @@
 
 - getKcinfoBykch
 - getKcinfosByJsh
+- getKcinfosByXh
+- updataKcqdNotAllow
+- updataKcqdAllow
+
+## kcqd
+
+- signIn
+- getKcqdInfosByKch
 
 # 开发总结
 

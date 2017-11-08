@@ -22,6 +22,22 @@
             </choose>
         </where>
     </select>
+    <select id="getStudentForKcqdInfo" resultType="Student" parameterType="java.util.HashMap">
+        SELECT
+        *
+        FROM
+        studentinfo
+        <where>
+            <choose>
+                <when test="flag==0">
+                    AND openid=#{id_or_openid}
+                </when>
+                <when test="flag==1">
+                    AND id=#{id_or_openid}
+                </when>
+            </choose>
+        </where>
+    </select>
     <select id="getStudents" resultType="Student">
         SELECT
         *
