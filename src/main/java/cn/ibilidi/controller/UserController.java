@@ -66,7 +66,7 @@ public class UserController {
 
         userService.updateWXUser(id,name,headurl,openid,gender);
         map.put(GlobalConstants.STATE,200);
-        map.put(GlobalConstants.MESSAGE,"success");
+        map.put(GlobalConstants.MESSAGE,"更新用户信息成功");
         return map;
     }
 
