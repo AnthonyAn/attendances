@@ -1,6 +1,7 @@
 package cn.ibilidi.serviceimp;
 
 import cn.ibilidi.dao.UserDao;
+import cn.ibilidi.exception.UpdataWxUserInfoException;
 import cn.ibilidi.model.User;
 import cn.ibilidi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +31,16 @@ public class UserServiceImp implements UserService {
         return userDao.getAllUsers();
     }
 
-    public int updateWXUser(String id,String name,String headurl,String openid,int gender) {
+    public int updateWXUser(String id,String name,String headurl,String openid,String gender) throws UpdataWxUserInfoException {
         User user=new User();
         user.setId(id);
         user.setGender(gender);
         user.setHeadurl(headurl);
         user.setOpenid(openid);
         user.setName(name);
-        return userDao.updateWXUser(user);
+        int tmp=userDao.updateWXUser(user);
+        if(tmp==0)
+            throw new UpdataWxUserInfoException("学号或教工号与姓名不匹配！");
+        return tmp;
     }
 }

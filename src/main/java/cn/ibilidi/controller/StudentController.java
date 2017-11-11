@@ -24,6 +24,7 @@ public class StudentController {
         HashMap<String,Object> map=new HashMap<String, Object>();
 
         Student student= studentService.getStudentByOpenid(openid);
+        System.out.print(student);
         map.put(GlobalConstants.DATA,student);
         map.put(GlobalConstants.MESSAGE,"success");
         map.put(GlobalConstants.STATE,200);

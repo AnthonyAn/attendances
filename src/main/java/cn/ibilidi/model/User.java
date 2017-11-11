@@ -8,7 +8,18 @@ public class User {
     private String name;
     private String openid;
     private String headurl;
-    private int gender;
+    private String gender;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", openid='" + openid + '\'' +
+                ", headurl='" + headurl + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
 
     public String getId() {
         return id;
@@ -42,22 +53,11 @@ public class User {
         this.headurl = headurl;
     }
 
-    public int getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", openid='" + openid + '\'' +
-                ", headurl='" + headurl + '\'' +
-                ", gender=" + gender +
-                '}';
     }
 }

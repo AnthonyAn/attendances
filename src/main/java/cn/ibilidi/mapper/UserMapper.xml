@@ -8,7 +8,7 @@
         <result column="name" property="name" jdbcType="VARCHAR" javaType="String"/>
         <result column="openid" property="openid" jdbcType="VARCHAR" javaType="String"/>
         <result column="headurl" property="headurl" jdbcType="VARCHAR" javaType="String"/>
-        <result column="gender" property="gender" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="gender" property="gender" jdbcType="VARCHAR" javaType="String"/>
     </resultMap>
     <select id="getUser" resultMap="User">
         SELECT

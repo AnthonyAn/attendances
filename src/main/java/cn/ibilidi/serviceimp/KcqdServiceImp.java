@@ -20,16 +20,21 @@ public class KcqdServiceImp implements KcqdService{
 
     public int insertQdInfo(KcqdInfo kcqdInfo) throws IllegalSignInException {
         KcInfo kcInfo=kcInfoService.getKcInfoByKch(kcqdInfo.getKch());
-        System.out.print(kcInfo);
-        if(kcInfo.getAllowornot()==1){
-            return kcqdInfoDao.insertQdInfo(kcqdInfo);
-        }else {
+        if(kcInfo.getAllowornot()!=1){
             throw new IllegalSignInException("该课程入口未开启，签到失败");
         }
+        if(this.hasSignIn(kcqdInfo.getKch(),kcqdInfo.getXh())){
+            throw new IllegalSignInException("你今天已经签过到了，签到失败");
+        }
+        return kcqdInfoDao.insertQdInfo(kcqdInfo);
     }
 
     public ArrayList<KcqdInfo> getKcqdInfos(String kch) {
         return kcqdInfoDao.getKcqdInfos(kch);
+    }
+
+    public boolean hasSignIn(String kch, String xh) {
+        return   kcqdInfoDao.getIsSignOrNot(kch,xh)!=0;
     }
 
 

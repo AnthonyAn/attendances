@@ -8,4 +8,5 @@ import java.util.ArrayList;
 public interface KcqdService {
     int insertQdInfo(KcqdInfo kcqdInfo) throws IllegalSignInException;
     ArrayList<KcqdInfo> getKcqdInfos(String kch);
+    boolean hasSignIn(String kch,String xh);
 }
