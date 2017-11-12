@@ -10,4 +10,5 @@ public interface KcInfoService {
     ArrayList<KcInfo> getKcInfosByJsh(String jsh,String kcmc,String jxdd);
     ArrayList<KcInfo> getKcInfosByXh(String xh);
     int updataAllowOrNot(String kch,int allowornot);
+   int changeAllowOrNot(String kch);
 }

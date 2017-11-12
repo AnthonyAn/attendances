@@ -74,4 +74,14 @@ public class KcInfoController {
         return map;
     }
 
+    @RequestMapping("/changeAllowOrNot/{kch}")
+    @ResponseBody
+    public HashMap<String,Object> changeAllowOrNot(@PathVariable String kch){
+        HashMap<String,Object> map=new HashMap<String, Object>();
+        kcInfoService.changeAllowOrNot(kch);
+        map.put(GlobalConstants.MESSAGE,"课程签到状态已更改");
+        map.put(GlobalConstants.STATE,200);
+        return map;
+    }
+
 }

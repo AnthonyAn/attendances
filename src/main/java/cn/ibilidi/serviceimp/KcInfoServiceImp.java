@@ -35,4 +35,14 @@ public class KcInfoServiceImp implements KcInfoService {
         return kcInfoDao.updateAllowOrNot(kch,allowornot);
     }
 
+    public int changeAllowOrNot(String kch){
+        KcInfo kcInfo=this.getKcInfoByKch(kch);
+        if(kcInfo.getAllowornot()==0){
+            return this.updataAllowOrNot(kch,1);
+        }else {
+            return this.updataAllowOrNot(kch,0);
+
+        }
+    }
+
 }
