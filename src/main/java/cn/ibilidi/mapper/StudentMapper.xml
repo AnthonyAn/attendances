@@ -74,5 +74,6 @@
             </if>
             AND studentinfo.id=xkb.id
         </where>
+        ORDER BY studentinfo.id ASC
     </select>
 </mapper>
