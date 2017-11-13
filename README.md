@@ -27,6 +27,7 @@
 - getKcinfosByXh
 - updataKcqdNotAllow
 - updataKcqdAllow
+- changeAllowOrNot
 
 ## kcqd
 
