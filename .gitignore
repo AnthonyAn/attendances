@@ -4,5 +4,8 @@
 
 
 # IntelliJ project files
-.idea
 *.iml
+target/
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/workspace.xml
