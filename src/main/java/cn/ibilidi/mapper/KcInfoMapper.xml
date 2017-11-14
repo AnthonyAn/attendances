@@ -29,6 +29,7 @@
            <if test="jxdd!=null and jxdd!=''">
                AND skdd LIKE #{jxdd_pattern}
            </if>
+           ORDER BY kch
        </where>
 
    </select>

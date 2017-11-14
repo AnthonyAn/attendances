@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ibilidi.dao.StudentDao">
+    <resultMap id="Student" type="Student">
+        <collection property="kcInfos" column="{xh=xh}" select="cn.ibilidi.dao.KcInfoDao.getKcInfosByXh" ofType="KcInfo"></collection>
+    </resultMap>
+
+    <!--虽然和getStudentForKcqdInfo函数的sql一样，但是玩玩不能在获取签到数据时用此函数，注意resultMap一旦映射上，就会出现查询的死循环-->
+    <select id="getStudent" resultMap="Student" parameterType="java.util.HashMap">
+        SELECT
+        *,studentinfo.id AS xh
+        FROM
+        studentinfo
+        <where>
+            <choose>
+                <when test="flag==0">
+                    AND openid=#{id_or_openid}
+                </when>
+                <when test="flag==1">
+                    AND id=#{id_or_openid}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <!--获取课程关联的用户数据一定要另外定义一个函数，resultType纯粹为Student不会再关联课程-->
+    <select id="getStudentForKcqdInfo" resultType="Student" parameterType="java.util.HashMap">
+        SELECT
+        *
+        FROM
+        studentinfo
+        <where>
+            <choose>
+                <when test="flag==0">
+                    AND openid=#{id_or_openid}
+                </when>
+                <when test="flag==1">
+                    AND id=#{id_or_openid}
+                </when>
+            </choose>
+        </where>
+    </select>
+    <select id="getStudents" resultType="Student">
+        SELECT
+        *
+        FROM
+        studentinfo
+        <where>
+            <choose>
+                <when test="flag==0">
+                    AND bj=#{bj_or_zy_or_nj}
+                </when>
+                <when test="flag==1">
+                    AND zy=#{bj_or_zy_or_nj}
+                </when>
+                <when test="flag==2">
+                    AND nj=#{bj_or_zy_or_nj}
+                </when>
+            </choose>
+        </where>
+    </select>
+    <select id="getAllStudents" resultType="Student">
+        SELECT
+        *
+        FROM
+        studentinfo
+    </select>
+    <select id="getStudentsByKch" resultType="Student" parameterType="java.util.HashMap">
+        SELECT
+        studentinfo.*
+        FROM
+        studentinfo,xkb
+        <where>
+            <if test="kch!=null and kch!=''">
+            AND xkb.kch=#{kch}
+            </if>
+            AND studentinfo.id=xkb.id
+        </where>
+        ORDER BY studentinfo.id ASC
+    </select>
+</mapper>
