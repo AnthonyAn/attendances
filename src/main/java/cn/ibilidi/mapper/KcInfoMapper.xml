@@ -12,6 +12,10 @@
         SELECT kcb.*
         FROM kcb WHERE kch=#{kch}
     </select>
+    <select id="getKcInfoWithoutStuByKch" resultType="KcInfo" parameterType="java.util.HashMap">
+        SELECT kcb.*
+        FROM kcb WHERE kch=#{kch}
+    </select>
    <select id="getKcInfosByJsh" resultType="KcInfo" parameterType="java.util.HashMap">
        <if test="jxdd!=null and jxdd!=''">
            <bind name="jxdd_pattern" value="'%'+jxdd+'%'"/>

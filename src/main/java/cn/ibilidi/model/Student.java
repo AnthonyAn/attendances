@@ -6,6 +6,7 @@ public class Student extends User{
     private String bj;
     private String nj;
     private String zy;
+    private List<KcInfo> glkcInfos;
     private List<KcInfo> kcInfos;
 
     @Override
@@ -15,8 +16,20 @@ public class Student extends User{
                 ", nj='" + nj + '\'' +
                 ", zy='" + zy + '\'' +
                 ", kcInfos=" + kcInfos +
+                ", glkcInfos=" + glkcInfos +
                 '}';
     }
+
+
+    public List<KcInfo> getGlkcInfos() {
+        return glkcInfos;
+    }
+
+    public void setGlkcInfos(List<KcInfo> glkcInfos) {
+        this.glkcInfos = glkcInfos;
+    }
+
+
 
     public List<KcInfo> getKcInfos() {
         return kcInfos;

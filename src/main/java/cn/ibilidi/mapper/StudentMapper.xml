@@ -5,6 +5,7 @@
 <mapper namespace="cn.ibilidi.dao.StudentDao">
     <resultMap id="Student" type="Student">
         <collection property="kcInfos" column="{xh=xh}" select="cn.ibilidi.dao.KcInfoDao.getKcInfosByXh" ofType="KcInfo"></collection>
+        <collection property="glkcInfos" column="{xh=xh}" select="cn.ibilidi.dao.KcglInfoDao.getKcglInfoByXh" ofType="KcglInfo"></collection>
     </resultMap>
 
     <!--虽然和getStudentForKcqdInfo函数的sql一样，但是玩玩不能在获取签到数据时用此函数，注意resultMap一旦映射上，就会出现查询的死循环-->
@@ -14,6 +15,7 @@
         FROM
         studentinfo
         <where>
+
             <choose>
                 <when test="flag==0">
                     AND openid=#{id_or_openid}
