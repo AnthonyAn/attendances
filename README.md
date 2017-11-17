@@ -34,6 +34,12 @@
 - signIn
 - getKcqdInfosByKch
 
+## feedback
+
+- addFeedback
+- getFeedback
+
+
 # 开发总结
 
 ## mybatis参数绑定
