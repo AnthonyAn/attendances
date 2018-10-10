@@ -1,5 +1,7 @@
 package cn.ibilidi.model;
 
+import java.util.List;
+
 /**
  * Created by Anthony on 2017/10/28.
  */
@@ -9,6 +11,8 @@ public class User {
     private String openid;
     private String headurl;
     private String gender;
+
+
 
     @Override
     public String toString() {

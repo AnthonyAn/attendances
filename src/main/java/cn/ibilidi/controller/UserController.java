@@ -53,6 +53,7 @@ public class UserController {
     @RequestMapping(value="/getAllUsers")
     @ResponseBody
     public Map<String, Object> getAllUsers(){
+        System.out.println();
         Map<String,Object> map=new HashMap<String, Object>();
 
         ArrayList<User> users=userService.getAllUsers();
